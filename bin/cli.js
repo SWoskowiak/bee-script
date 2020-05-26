@@ -480,7 +480,8 @@ const beeScript = new Beescript();
 
 let beeSriptCLI = new Liftoff({
   name: 'bee',
-  configName: 'knexFile'
+  configName: 'knexFile',
+  moduleName: require('../package.json').name
 }).on('require', function (name, module) {
   console.log('Loading external module:', name);
 }).on('requireFail', function (name, err) {
