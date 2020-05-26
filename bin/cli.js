@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 const prompts = require('prompts')
 const moment = require('moment')
-const today = moment().format('MMMM Do YYYY, h:mm:ss a')
-const yesterday = moment().subtract(1, 'days').format('MMMM Do YYYY, h:mm:ss a')
-const lastWeek = moment().subtract(1, 'week').format('MMMM Do YYYY, h:mm:ss a')
 const path = require('path')
 const fs = require('fs')
 const _ = require('lodash')
@@ -11,11 +8,11 @@ const argv = require('yargs').argv
 const { green, red, underline, bold, yellow, grey, cyan, magenta, white } = require('kleur')
 const { fork } = require('child_process')
 const { table, getBorderCharacters } = require('table')
-const scriptGenerator = require('./scriptTemplate')
+const scriptGenerator = require('../scriptTemplate')
 
 const outputLimit = 255
 const noteLimit = 50
-const version = require('./package.json').version
+const version = require('../package.json').version
 
 // 🐝 script
 class Beescript {
