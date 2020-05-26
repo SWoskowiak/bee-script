@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 const prompts = require('prompts')
 const moment = require('moment')
 const path = require('path')
@@ -9,6 +10,7 @@ const { green, red, underline, bold, yellow, grey, cyan, magenta, white } = requ
 const { fork } = require('child_process')
 const { table, getBorderCharacters } = require('table')
 const scriptGenerator = require('../scriptTemplate')
+const Liftoff = require('liftoff');
 
 const outputLimit = 255
 const noteLimit = 50
@@ -418,8 +420,10 @@ ${grey('EXAMPLES:')}
     process.exit()
   }
 
-  async main () {
+  async main (liftOff, env) {
     const { _: [ command, ...args ] } = argv
+
+    console.log(this, liftOff, env)
 
     // We need to ensure out db handle exists
     try {
@@ -474,12 +478,36 @@ Use ${yellow('bee')} to see all commands
 
 const beeScript = new Beescript();
 
-(async function () {
-  // If run from the command line
-  if (require.main === module) {
-    await beeScript.main()
-  // Otherwise export it
+let beeSriptCLI = new Liftoff({
+  name: 'bee',
+  configName: 'knexFile'
+}).on('require', function (name, module) {
+  console.log('Loading external module:', name);
+}).on('requireFail', function (name, err) {
+  console.log('Unable to load:', name, err);
+})
+
+beeSriptCLI.launch(function() {
+  if(this.configPath) {
+    process.chdir(this.configBase);
+    console.log('Setting current working directory:', this.configBase);
+    // kick off here
+    // beeScript.main()
   } else {
-    module.exports = beeScript
+    console.log('No knexFile found.');
+    process.exit(1);
   }
-})()
+}, launch)
+
+async function launch () {
+  await beeScript.main()
+}
+// (async function () {
+//   // If run from the command line
+//   if (require.main === module) {
+//     await beeScript.main()
+//   // Otherwise export it
+//   } else {
+//     module.exports = beeScript
+//   }
+// })()
