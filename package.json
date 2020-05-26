@@ -1,0 +1,33 @@
+{
+  "name": "bee-script",
+  "version": "0.1.0",
+  "description": "Knex.js powered CLI for running scripts",
+  "main": "cli.js",
+  "keywords": [
+    "knexjs",
+    "knex",
+    "script",
+    "history",
+    "runner",
+    "scripts",
+    "cli"
+  ],
+  "author": "Stefan Woskowiak",
+  "license": "MIT",
+  "dependencies": {
+    "kleur": "^3.0.3",
+    "knex": "^0.21.1",
+    "lodash": "^4.17.15",
+    "moment": "^2.26.0",
+    "pg": "^8.2.1",
+    "prompts": "^2.3.2",
+    "table": "^5.4.6",
+    "yargs": "^15.3.1"
+  },
+  "scripts": {
+    "initDB": "docker run -d --name beeDB --restart unless-stopped -e POSTGRES_USER=queenBee -e POSTGRES_PASSWORD=beeTheChangeYouWantToSeeInTheWorld -e POSTGRES_DB=beeScripts -e POSTGRES_HOST_AUTH_METHOD=trust -p 32777:5432 postgres:11"
+  },
+  "bin": {
+    "bee": "./cli.js"
+  }
+}
