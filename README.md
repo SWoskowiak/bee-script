@@ -1,4 +1,4 @@
-# bee-script
+# 🐝bee-script🐝
 A Knex.js powered script runner CLI tool
 
 # installation
