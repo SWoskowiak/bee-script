@@ -16,7 +16,6 @@
     "mssql": "^6.2.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
-    "pg": "^8.0.3",
     "sqlite3": "^4.1.1"
   },
   "peerDependenciesMeta": {
@@ -51,6 +50,6 @@
     "url": "https://github.com/SWoskowiak/bee-script"
   },
   "bin": {
-    "bee": "./cli.js"
+    "bee": "./bin/cli.js"
   }
 }
