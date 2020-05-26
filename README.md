@@ -21,3 +21,4 @@ from there you can type `bee` to see a list of all commands available to you
 - describe command to explain a given script and some details around it
 - a startup task creator to define a set of scripts to run with a bee script:startup command
 - a one time task creator (think knex migrations) to run scripts once and checks if they have been run already
+- slim down table output on commands to fit smaller terminal sizes better
