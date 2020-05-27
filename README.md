@@ -2,13 +2,12 @@
 A Knex.js powered script runner CLI tool
 
 # installation
-yarn add bee-script
-npm install bee-script
+npm install bee-script -g
 
-feel free to use global install flags as wanted
 
 # Running
 bee-script (for now) must be run from the directory containing your knexFile.js file.
+In addition to that you must also ensure knex (and the db drivers it needs) are installed in your project
 It uses that file to establish a connection to your DB instance and initialize its tracking tables
 
 from there you can type `bee` to see a list of all commands available to you
