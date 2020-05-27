@@ -29,9 +29,14 @@ class Beescript {
   async initKnex () {
     if (!this.knex) {
       const creds = require(path.join(process.cwd(), 'knexFile'))
+      if (!creds) {
+        console.log(red('Bee script was unable to locate knexFile.js'))
+        console.log(red('Bee script must be run from your project root folder containing knexFile.js'))
+        this.cancel()
+      }
 
       let knexModule = await new Promise((res, rej) => {
-        const knex = resolve('knex', { basedir: process.cwd() }, (err, pathToKnex) => {
+        resolve('knex', { basedir: process.cwd() }, (err, pathToKnex) => {
           if (err) {
             console.log(red('Bee script requires knex be installed in your project, EX: npm install knex'))
             this.cancel()
@@ -398,18 +403,6 @@ ${grey('EXAMPLES:')}
 
     console.log(this.beeAscii('The Bee-autiful Knex.js powered Script Runner'))
     console.log(table(data, { border: getBorderCharacters('norc') }))
-
-
-//     const message =
-//  `
-// ${this.beeAscii('Commands')}
-//   ${bold().green('run <script>')}        Run the script at the given path EX: bee run ./app/scripts/doWork.js --args=supported
-//   ${bold().green('history')}             See the run history of scripts ran (options: --limit )
-//   ${bold().green('script')}              See all the options for script creation/execution etc.
-//   ${bold().green('script:make <name>')}  Create a new script with the given name
-//     `
-
-//     console.log(message)
   }
 
   async rollback (rollback) {
