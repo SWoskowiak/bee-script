@@ -18,6 +18,7 @@ You can also use `bee output` to see recent output of ran scripts with the abili
 
 Use `bee` to see all commands and their options for better usage.
 
+![bee options](https://i.imgur.com/8YvucgH.png)
 
 
 ## Running
