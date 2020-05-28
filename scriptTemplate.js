@@ -3,9 +3,11 @@ const _ = require('lodash')
 
 module.exports = ({ scriptName } = {}) => {
   // Build out the script with what we got in the CLI
-  const className = _.capitalize(scriptName)
-  const instanceName = scriptName
-  if (className === instanceName) throw new Error('Please use camelCase style for script name')
+  const cameledName = _.camelCase(scriptName)
+  const className = _.upperFirst(cameledName)
+  const instanceName = cameledName
+  // may not need
+  // if (className === instanceName) throw new Error('Please use camelCase style for script name')
   return `
 /* Bee script generated template
 Some tips to follow:
@@ -28,7 +30,7 @@ class ${className} {
   }
 }
 
-const ${scriptName} = new ${className}();
+const ${cameledName} = new ${className}();
 
 (async function () {
   // If run from the command line/externally then just run it
