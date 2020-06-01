@@ -6,10 +6,7 @@ module.exports = ({ scriptName } = {}) => {
   const cameledName = _.camelCase(scriptName)
   const className = _.upperFirst(cameledName)
   const instanceName = cameledName
-  // may not need
-  // if (className === instanceName) throw new Error('Please use camelCase style for script name')
-  return `
-/* Bee script generated template
+  return `/* Bee script generated template
 Some tips to follow:
   1) Make your script idempotent!
   2) Use console.log() (or any stdout printer) to capture important info

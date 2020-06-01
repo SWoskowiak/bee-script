@@ -2,7 +2,7 @@
   "name": "bee-script",
   "version": "0.3.2",
   "description": "Knex.js powered CLI for running scripts",
-  "main": "cli.js",
+  "main": "bin/cli.js",
   "keywords": [
     "knexjs",
     "knex",
@@ -28,5 +28,10 @@
   },
   "bin": {
     "bee": "./bin/cli.js"
+  },
+  "devDependencies": {
+    "knex": "^0.21.1",
+    "pg": "^8.2.1",
+    "standard": "^14.3.4"
   }
 }
