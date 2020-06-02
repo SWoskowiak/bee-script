@@ -31,9 +31,9 @@ Type `bee` to see a list of all commands available to you
 ## Roadmap
 - automatic knexFile.js discovery so running bee commands is less tedius
 - stats command to understand size and number of entries being used by bee-script
-- cleanup/delete command to delete rows of output/history we don't want
 - better ways for the template generated scripts to describe themselves
 - describe command to explain a given script and some details around it
 - a startup task creator to define a set of scripts to run with a bee script:startup command
 - a one time task creator (think knex migrations) to run scripts once and checks if they have been run already
 - slim down table output on commands to fit smaller terminal sizes better
+- configure the global install to have its own potential db credentials ("global" script run tracking support)
